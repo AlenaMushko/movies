@@ -4,5 +4,5 @@ import {IGenre} from "../interfaces";
 
 
 export const genresService = {
-    getAll: ():IRes<IGenre[]> => service.get(urls.genres.base + api_key),
+    getAll: ():IRes<IGenre> => service.get(urls.genres.base + api_key),
 }

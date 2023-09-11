@@ -4,6 +4,7 @@ import {createBrowserRouter,} from "react-router-dom";
 import {AnimationPage, GenresPage, MovieIdPage, MoviesPage, SoonPage, TvPage} from "../pages";
 import {AppRoutes} from "./appRoutes";
 import {MainLayout} from "../layouts";
+import {Error} from "../components";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <MainLayout/>,
+        element: <Error/>,
     },
 ]);

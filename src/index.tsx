@@ -8,14 +8,15 @@ import {Provider} from "react-redux";
 import {RouterProvider} from "react-router-dom";
 
 import {router} from "./routing";
+import {store} from "./redux/store";
 
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-// <Provider store={}>
-    <RouterProvider router={router} />
-// </Provider>
+    <Provider store={store}>
+        <RouterProvider router={router}/>
+    </Provider>
 );
 
