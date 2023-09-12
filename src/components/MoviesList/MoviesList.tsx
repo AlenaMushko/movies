@@ -1,15 +1,20 @@
 import React, {useEffect} from "react";
-import { useTheme} from "@mui/material";
 
 import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
 import {movieAction} from "../../redux/slices/moviesSlice";
 import {MoviesListCard} from "./MoviesListCard";
 import {CardsContainer} from "../CardsContainer";
 
-export const MoviesList: React.FC = () => {
-    const theme =useTheme();
+interface IPropsMoviesList {
+    backLinkHref:string,
+    searchValue:string
+}
+
+export const MoviesList: React.FC<IPropsMoviesList> = ({backLinkHref, searchValue}) => {
     const dispatch = useAppDispatch();
     const {movies, page, total_pages} = useAppSelector(state => state.movies);
+
+
 
     useEffect(() => {
         dispatch(movieAction.getAllMovies())
@@ -19,7 +24,7 @@ export const MoviesList: React.FC = () => {
       <CardsContainer>
           {movies?.map((item) => (
               <MoviesListCard key={item.id} item={item}
-                  // pageType={pageType} backLinkHref={backLinkHref}
+                 backLinkHref={backLinkHref}
               />
           ))}
       </CardsContainer>

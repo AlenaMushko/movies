@@ -1,52 +1,47 @@
-// import {useContext, useEffect, useState} from "react";
-// import {Card} from "@chakra-ui/react";
-//
-// import {LoaderContext} from "../../routing/LoaderProvider";
-// import {moviesService} from "../../services";
-// import {PosterPreview} from "./PosterPreview";
-// import {MovieDescription} from "./MovieDescription";
-//
-// export const MovieInfo = ({movieId}) => {
-//
-//     const {setIsLoading} = useContext(LoaderContext);
-//     const [movie, setMovie] = useState({});
-//
-//     useEffect(() => {
-//         setIsLoading(true);
-//         moviesService.getById(movieId)
-//             .then((res) => {
-//                 setMovie(res.data);
-//                 setIsLoading(false);
-//             })
-//             .catch((error) => {
-//                 console.error("Error fetching movies:", error);
-//             })
-//             .finally(setIsLoading(false));
-//     }, [movieId, setIsLoading]);
-//
-//     const {
-//         genres, vote_average, original_title, tagline, adult, title, poster_path,
-//         release_date, overview, production_companies
-//     } = movie;
-//
-//     return (
-//         <>
-//             <Card
-//                 direction={{base: 'column', sm: 'row'}}
-//                 overflow='hidden'
-//                 variant='outline'
-//                 boxShadow="0px 8px 43px rgba(34, 178, 218, 0.7)"
-//             >
-//                 <PosterPreview w="40%" posterPath={poster_path}
-//                                secondTitle={original_title} title={title}
-//                                adult={adult}/>
-//                 <MovieDescription genres={genres} title={title} original_title={original_title}
-//                                   vote_average={vote_average} tagline={tagline} release_date={release_date}
-//                                   overview={overview} production_companies={production_companies}/>
-//             </Card>
-//
-//         </>
-//     );
-// };
-//
-export {}
+import {Box, Container, useTheme} from "@mui/material";
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom";
+
+import {MovieDescription} from "./MovieDescription";
+import {PosterPreview} from "./PosterPreview";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {movieAction} from "../../redux/slices/moviesSlice";
+import {CastMovieList} from "./CastMovieList";
+import {VideoForMovie} from "./VideoForMovie";
+
+export const MovieInfo: React.FC = () => {
+    const {movieId} = useParams<{ movieId: string }>();
+    const theme = useTheme();
+
+    const dispatch = useAppDispatch();
+    const {currentMovie} = useAppSelector(state => state.movies)
+
+    useEffect(() => {
+        dispatch(movieAction.getMovieById({id: +movieId}))
+    }, []);
+
+    return (
+        <>
+            {currentMovie && <><Container sx={{
+                display: 'flex',
+                gap: '3vw',
+                [theme.breakpoints.down('md')]: {
+                    flexDirection: 'column'
+                },
+            }}
+            >
+                <PosterPreview
+                    posterPath={currentMovie?.poster_path}
+                    secondTitle={currentMovie?.original_title} title={currentMovie?.title}
+                    adult={currentMovie?.adult}/>
+                <MovieDescription currentMovie={currentMovie}/>
+            </Container>
+                <Box sx={{display:'flex', justifyContent:'center', marginTop:'40px'}}>
+                <VideoForMovie id={movieId}/>
+                </Box>
+                <CastMovieList id={movieId}/>
+            </>}
+        </>
+    );
+};
+

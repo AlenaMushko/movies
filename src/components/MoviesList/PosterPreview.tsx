@@ -1,15 +1,15 @@
 import React from "react";
 import {Avatar, Box, Rating} from "@mui/material";
 
-interface IProps {
-    stars: number;
+interface IPropsPosterPreview {
+    stars?: number;
     posterPath: string,
-    adult: boolean;
+    adult?: boolean;
     title: string;
-    secondTitle: string
+    secondTitle: string,
 }
 
-export const PosterPreview: React.FC<IProps> = ({stars, posterPath, adult, title, secondTitle}) => {
+export const PosterPreview: React.FC<IPropsPosterPreview> = ({stars, posterPath, adult, title, secondTitle}) => {
     const cardSRC = `https://image.tmdb.org/t/p/w500${posterPath}`;
     const notPoster = 'https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg';
     return (

@@ -3,11 +3,11 @@ import React from 'react';
 
 import {IGenresObj} from "../../interfaces";
 
-interface IProps{
+interface IPropsGenreItem{
     item:IGenresObj;
-};
+}
 
-export const GenreItem:React.FC<IProps> = ({item}) => {
+export const GenreItem:React.FC<IPropsGenreItem> = ({item}) => {
 
     return (
         <Card

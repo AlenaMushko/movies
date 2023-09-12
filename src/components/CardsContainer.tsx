@@ -1,17 +1,18 @@
 import React, {ReactNode} from 'react';
 import {Container, useTheme} from "@mui/material";
 
-interface IProps{
+interface IPropsCardsContainer{
     children:ReactNode
 }
 
-export const CardsContainer:React.FC<IProps> = ({children}) => {
+export const CardsContainer:React.FC<IPropsCardsContainer> = ({children}) => {
     const theme =useTheme();
     return (
         <Container sx={{
             paddingY: '40px',
             display: 'grid',
             gridGap: '20px',
+            gridTemplateRows: '1fr',
             justifyContent: 'center',
             alignItems: 'center',
             [theme.breakpoints.down('md')]: {

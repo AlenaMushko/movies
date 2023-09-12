@@ -1,7 +1,6 @@
 const baseURL = process.env.REACT_APP_API;
 
-const KEY = '8d41be39d2696eeff12b89d916a6c984';
-
+const KEY = process.env.REACT_APP_API_KEY;
 
 const api_key = `?api_key=${KEY}`;
 
@@ -11,6 +10,8 @@ const genre = '/genre/movie/list';
 const soon = '/movie/upcoming';
 const tv = `discover/tv`;
 const search = `search/movie`;
+const cast = '/credits';
+const videos = '/videos';
 
 const urls = {
     movies: {
@@ -31,6 +32,12 @@ const urls = {
     },
     search: {
         base: search,
+    },
+    cast:{
+        base:cast,
+    },
+    videos:{
+        base:videos,
     },
 }
 

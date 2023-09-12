@@ -1,10 +1,11 @@
 import {createAsyncThunk, createSlice, isFulfilled, isPending,} from "@reduxjs/toolkit";
-import {IFilm, IMovieObj} from "../../interfaces";
+import {IFilm, IMovieById, IMovieObj} from "../../interfaces";
 import {AxiosError} from "axios";
 import {moviesService} from "../../services";
 
 interface IState {
     movies: IFilm[],
+    currentMovie:IMovieById,
     page:number,
     total_pages:number,
     isLoading: boolean,
@@ -14,6 +15,7 @@ interface IState {
 
 const initialState: IState = {
     movies: [],
+    currentMovie:null,
     page:0,
     total_pages:0,
     isLoading: false,
@@ -26,6 +28,19 @@ const getAllMovies = createAsyncThunk<IMovieObj, void>(
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await moviesService.getAll();
+            return data;
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data)
+        }
+    }
+);
+
+const getMovieById = createAsyncThunk<IMovieById, {id:number}>(
+    'moviesSlice/getMovieById',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            const {data} = await moviesService.getById(id);
             return data;
         } catch (e) {
             const err = e as AxiosError;
@@ -48,6 +63,9 @@ const moviesSlice = createSlice({
             state.page = payload.page
             state.total_pages = payload.total_pages
         })
+        .addCase(getMovieById.fulfilled, (state, {payload})=>{
+            state.currentMovie = payload
+        })
         .addMatcher(isPending(), state => {
             state.isLoading = true
             state.error = null
@@ -63,6 +81,7 @@ const {reducer: movieReducer, actions} = moviesSlice;
 const  movieAction={
     ...actions,
     getAllMovies,
+    getMovieById
 }
 
 export {

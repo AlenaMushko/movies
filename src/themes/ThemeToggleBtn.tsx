@@ -6,8 +6,6 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import {movieAction} from "../redux/slices/moviesSlice";
 import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
 
-
-
 export const ThemeToggleButton:React.FC = () => {
     const dispatch = useAppDispatch()
     const {theme} = useAppSelector(state => state.movies)
@@ -20,7 +18,7 @@ export const ThemeToggleButton:React.FC = () => {
 
     return (
         <Button onClick={toggleThemeHandler}>
-            {theme === 'dark'? <NightsStayIcon/>:<Brightness7Icon/>}
+            {theme === 'dark'? <NightsStayIcon fontSize="large"/>:<Brightness7Icon fontSize="large"/>}
         </Button>
     );
 }

@@ -1,25 +1,21 @@
-import {Link} from 'react-router-dom';
-import React, {useEffect} from "react";
+import { useNavigate} from 'react-router-dom';
+import React from "react";
 
 
-import {AppRoutes} from "../../routing/appRoutes";
+import {AppRoutes} from "../../routing";
 import {IFilm} from "../../interfaces";
-import {Card, CardContent, Typography} from "@mui/material";
+import {Box, Card, CardContent, Typography} from "@mui/material";
 import {PosterPreview} from "./PosterPreview";
 import {GenreBadge} from "./GenreBadge";
 
-interface IProps {
+interface IPropsMoviesListCard {
     item: IFilm,
-    // pageType, backLinkHref
+    backLinkHref:string,
 }
 
-export const MoviesListCard: React.FC<IProps> = ({
-                                                     item,
-                                                     // pageType, backLinkHref
-                                                 }) => {
+export const MoviesListCard: React.FC<IPropsMoviesListCard> = ({item, backLinkHref}) => {
     const {
         adult,
-        backdrop_path,
         genre_ids,
         id,
         poster_path,
@@ -33,46 +29,37 @@ export const MoviesListCard: React.FC<IProps> = ({
         releaseDate = release_date.slice(0, 4);
     }
 
-    // const movieLink = `${AppRoutes.MOVIE}/${id}`;
-    // const linkToUse = pageType === "tv" ? "/tv" : movieLink;
-    //
-    // useEffect(() => {
-    //     localStorage.setItem('backLinkHref', backLinkHref);
-    // }, [backLinkHref]);
-    // console.log(item)
+    const navigate = useNavigate();
+    const handleNavigateToCardInfo = () => {
+        navigate(`${AppRoutes.MOVIE}/${id.toString()}`, {state:  backLinkHref});
+    };
+
     return (
         <Card
             sx={{
                 textAlign: 'center',
-                lineHeight: '60px',
                 transition: 'boxShadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 ":hover": {
                     boxShadow: "0px 8px 43px #775fd8"
                 }
             }}
+            onClick={handleNavigateToCardInfo}
         >
-            {/*<Link*/}
-            {/*    to={{*/}
-            {/*        pathname: linkToUse,*/}
-            {/*        state: {backLinkHref}, // Передаємо backLinkHref як стан*/}
-            {/*    }}*/}
-            {/*    // to={linkToUse}*/}
-            {/*>*/}
-                <PosterPreview
-                    // backdropPath={backdrop_path}
-                               posterPath={poster_path} stars={vote_average}
-                               secondTitle={original_title} title={title}
-                               adult={adult}/>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {title || original_title || ''}
-                    </Typography>
+            <PosterPreview
+                posterPath={poster_path} stars={vote_average}
+                secondTitle={original_title} title={title}
+                adult={adult}/>
+            <CardContent>
+                <Typography variant="h4" sx={{height: '80px', overflow: 'hidden',}}>
+                    {title || original_title || ''}
+                </Typography>
+                <Box sx={{display: 'flex', justifyContent: 'space-between', marginTop: '12px'}}>
                     <GenreBadge genre={genre_ids}/>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography variant="h6">
                         {releaseDate || ''}
                     </Typography>
-                </CardContent>
-            {/*</Link>*/}
+                </Box>
+            </CardContent>
         </Card>
     );
 };

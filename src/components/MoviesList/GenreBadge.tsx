@@ -4,11 +4,11 @@ import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
 import {genreActions} from "../../redux/slices/genresSlice";
 
-interface IProps {
+interface IPropsGenreBadge {
     genre: number[]
 }
 
-export const GenreBadge: React.FC<IProps> = ({genre}) => {
+export const GenreBadge: React.FC<IPropsGenreBadge> = ({genre}) => {
     const dispatch = useAppDispatch();
     const {genres} = useAppSelector(state => state.genres);
 
@@ -26,14 +26,14 @@ export const GenreBadge: React.FC<IProps> = ({genre}) => {
 
     let filmGenres: string = '';
     if (filmGenreId.length > 2) {
-        filmGenres = filmGenreId.slice(0, 2).join(', ');
+        filmGenres = filmGenreId.slice(0, 3).join(', ');
     } else {
         filmGenres = filmGenreId.join(', ')
     }
 
     return (
         <Box>
-            <Typography>{filmGenres || ''}</Typography>
+            <Typography variant="h6">{filmGenres || ''}</Typography>
         </Box>
     );
 };
