@@ -19,13 +19,13 @@ export const PosterPreview: React.FC<IPropsPosterPreview> = ({stars, posterPath,
                     src={cardSRC}
                     alt={title || secondTitle || ''}
                     width="100%"
-                    style={{borderRadius: '12px 12px 0 0 '}}
+                    style={{borderRadius: '8px 8px 0 0 '}}
                 />
                 : <img
                     src={notPoster}
                     alt={title || secondTitle || 'Film poster'}
                     width="100%"
-                    style={{borderRadius: '12px 12px 0 0 '}}
+                    style={{borderRadius: '8px 8px 0 0 '}}
                 />}
             {adult && <Avatar alt="adult" src=""
                                sx={{

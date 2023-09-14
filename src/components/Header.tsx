@@ -32,10 +32,6 @@ export const Header: React.FC = () => {
             label: 'Soon'
         },
         {
-            path: AppRoutes.TV,
-            label: 'Tv'
-        },
-        {
             path: AppRoutes.ANIMATION,
             label: 'Animation'
         }

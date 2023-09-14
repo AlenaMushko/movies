@@ -31,7 +31,10 @@ export const MoviesListCard: React.FC<IPropsMoviesListCard> = ({item, backLinkHr
 
     const navigate = useNavigate();
     const handleNavigateToCardInfo = () => {
-        navigate(`${AppRoutes.MOVIE}/${id.toString()}`, {state:  backLinkHref});
+        if(backLinkHref === '/'){
+            backLinkHref = AppRoutes.MOVIE
+        }
+        navigate(`${backLinkHref}/${id.toString()}`, {state:  backLinkHref});
     };
 
     return (

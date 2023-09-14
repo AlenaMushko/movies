@@ -6,4 +6,3 @@ export const castService = {
     getCastsByMovie: (id:number):IRes<ICastObj>=> service.get(urls.movieById.base+ `/${id}` + urls.cast.base + api_key),
 }
 
-

@@ -1,25 +1,18 @@
 import {Box, Container, useTheme} from "@mui/material";
-import React, {useEffect} from "react";
-import {useParams} from "react-router-dom";
+import React from "react";
 
 import {MovieDescription} from "./MovieDescription";
 import {PosterPreview} from "./PosterPreview";
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
-import {movieAction} from "../../redux/slices/moviesSlice";
 import {CastMovieList} from "./CastMovieList";
 import {VideoForMovie} from "./VideoForMovie";
+import {IMovieById} from "../../interfaces";
 
-export const MovieInfo: React.FC = () => {
-    const {movieId} = useParams<{ movieId: string }>();
+interface IpropsMovieInfo{
+    currentMovie:IMovieById,
+    movieId:string
+}
+export const MovieInfo: React.FC<IpropsMovieInfo> = ({currentMovie, movieId}) => {
     const theme = useTheme();
-
-    const dispatch = useAppDispatch();
-    const {currentMovie} = useAppSelector(state => state.movies)
-
-    useEffect(() => {
-        dispatch(movieAction.getMovieById({id: +movieId}))
-    }, []);
-
     return (
         <>
             {currentMovie && <><Container sx={{

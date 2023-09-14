@@ -8,7 +8,6 @@ const movie = '/discover/movie';
 const movieById = '/movie';
 const genre = '/genre/movie/list';
 const soon = '/movie/upcoming';
-const tv = `discover/tv`;
 const search = `search/movie`;
 const cast = '/credits';
 const videos = '/videos';
@@ -16,19 +15,15 @@ const videos = '/videos';
 const urls = {
     movies: {
         base: movie,
-
-    },
-    genres: {
-        base: genre,
     },
     movieById: {
         base: movieById,
     },
+    genres: {
+        base: genre,
+    },
     soon: {
         base: soon,
-    },
-    tv: {
-        base: tv,
     },
     search: {
         base: search,

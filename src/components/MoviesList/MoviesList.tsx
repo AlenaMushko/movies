@@ -1,24 +1,15 @@
-import React, {useEffect} from "react";
+import React from "react";
 
-import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
-import {movieAction} from "../../redux/slices/moviesSlice";
 import {MoviesListCard} from "./MoviesListCard";
 import {CardsContainer} from "../CardsContainer";
+import {IFilm} from "../../interfaces";
 
 interface IPropsMoviesList {
     backLinkHref:string,
-    searchValue:string
+    movies:IFilm[]
 }
 
-export const MoviesList: React.FC<IPropsMoviesList> = ({backLinkHref, searchValue}) => {
-    const dispatch = useAppDispatch();
-    const {movies, page, total_pages} = useAppSelector(state => state.movies);
-
-
-
-    useEffect(() => {
-        dispatch(movieAction.getAllMovies())
-    }, []);
+export const MoviesList: React.FC<IPropsMoviesList> = ({backLinkHref, movies}) => {
 
     return (
       <CardsContainer>

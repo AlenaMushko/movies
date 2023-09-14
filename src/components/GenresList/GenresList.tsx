@@ -5,7 +5,7 @@ import {genreActions} from "../../redux/slices/genresSlice";
 import {CardsContainer} from "../CardsContainer";
 import {GenreItem} from "./GenreItem";
 
-export const GenresList = () => {
+export const GenresList:React.FC = () => {
     const dispatch = useAppDispatch();
     const {genres} = useAppSelector(state => state.genres);
 

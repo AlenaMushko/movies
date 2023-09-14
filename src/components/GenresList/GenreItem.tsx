@@ -1,13 +1,21 @@
 import { Card } from '@mui/material';
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 import {IGenresObj} from "../../interfaces";
+import {AppRoutes} from "../../routing";
 
 interface IPropsGenreItem{
-    item:IGenresObj;
+    item:IGenresObj,
 }
 
 export const GenreItem:React.FC<IPropsGenreItem> = ({item}) => {
+
+    const navigate = useNavigate();
+
+    const handleGetMoviesByGanre=()=>{
+        navigate(`${AppRoutes.GENRE}/${item.id.toString()}`);
+    }
 
     return (
         <Card
@@ -21,6 +29,7 @@ export const GenreItem:React.FC<IPropsGenreItem> = ({item}) => {
                     boxShadow: "0px 8px 43px #775fd8"
                 }
             }}
+            onClick={handleGetMoviesByGanre}
         >{item.name}</Card>
     );
 };

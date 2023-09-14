@@ -5,3 +5,5 @@ export * from './MoviesList/index';
 export * from './GenresList/index'
 export * from './CardsContainer';
 export * from './SearchMovies';
+export * from './MyPagination';
+export * from './NotMovies';
