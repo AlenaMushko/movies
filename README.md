@@ -1,46 +1,29 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movies App 🎬
+##### This application is crafted for movie enthusiasts who are looking for films to watch. Dive into detailed information about each movie, catch a glimpse of its trailer, and decide what to indulge in for the evening.
 
-## Available Scripts
+### Main Features:
+Discover Movies: Browse a vast collection of movies to find the next movie to tick off your list.
+Detailed Information: Learn about the cast, director, storyline, and more.
+Watch Trailers: No need to hop to another platform, watch trailers directly within the app.
+Search Functionality: Find films by title or genre, making your choice easier and faster.
+User Friendly: A sleek, intuitive interface ensures a pleasant browsing experience.
 
-In the project directory, you can run:
+### etup & Installation:
+Clone the repository: git clone [repository_url]
+Navigate to the directory: cd movies
+Install the dependencies: npm install
+Run the app locally: npm start
 
-### `npm start`
+### Technologies Used:
+React (v18.2.0)
+TypeScript (v4.9.5)
+Redux (v1.9.5)
+@supabase/supabase-js (v2.33.2)
+@mui/material (v5.14.8)
+Axios (v1.5.0)
+React-hook-form (v7.46.1)
+Joi (v17.10.1)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Enjoy your movie time with the Movies App! 🍿📽️

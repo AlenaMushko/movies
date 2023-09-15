@@ -6,7 +6,6 @@ type IRes<U> = Promise<AxiosResponse<U>>
 export const service = axios.create({baseURL});
 
 
-
 export type {
     IRes
 }

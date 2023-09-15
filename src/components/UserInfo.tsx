@@ -1,15 +1,14 @@
-import { Avatar } from "@mui/material";
+import {Avatar} from "@mui/material";
 import React from "react";
 
-import userImg from '../assets/user.png';
+import {useAppSelector} from "../hooks/reduxHooks";
 
 export const UserInfo: React.FC = () => {
-    const userNick = 'Alona';
+    const {user} = useAppSelector(state => state.user);
 
     return (
-        <Avatar
-            alt={userNick}
-            src={userImg}
-        />
+        <Avatar sx={{bgcolor: '#a399ca', color: '#03071f'}} alt={user.name} src={user?.photo}>
+            {user?.name?.charAt(0)}
+        </Avatar>
     );
 };

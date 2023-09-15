@@ -7,10 +7,11 @@ import {CastMovieList} from "./CastMovieList";
 import {VideoForMovie} from "./VideoForMovie";
 import {IMovieById} from "../../interfaces";
 
-interface IpropsMovieInfo{
-    currentMovie:IMovieById,
-    movieId:string
+interface IpropsMovieInfo {
+    currentMovie: IMovieById,
+    movieId: string
 }
+
 export const MovieInfo: React.FC<IpropsMovieInfo> = ({currentMovie, movieId}) => {
     const theme = useTheme();
     return (
@@ -29,8 +30,8 @@ export const MovieInfo: React.FC<IpropsMovieInfo> = ({currentMovie, movieId}) =>
                     adult={currentMovie?.adult}/>
                 <MovieDescription currentMovie={currentMovie}/>
             </Container>
-                <Box sx={{display:'flex', justifyContent:'center', marginTop:'40px'}}>
-                <VideoForMovie id={movieId}/>
+                <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>
+                    <VideoForMovie id={movieId}/>
                 </Box>
                 <CastMovieList id={movieId}/>
             </>}

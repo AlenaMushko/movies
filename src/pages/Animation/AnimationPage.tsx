@@ -13,13 +13,13 @@ export const AnimationPage = () => {
     const {movies, page} = useAppSelector(state => state.movies);
 
     useEffect(() => {
-        dispatch(movieAction.getAnimationMovies({page:page}))
+        dispatch(movieAction.getAnimationMovies({page: page}))
     }, [page]);
 
     return (
         <>
             <MoviesList backLinkHref={backLinkHref} movies={movies}/>
-            {page >=1 && <MyPagination location={location}/>}
+            {page >= 1 && <MyPagination location={location}/>}
             {movies.length === 0 && <NotMovies/>}
         </>
     );

@@ -7,3 +7,4 @@ export * from './CardsContainer';
 export * from './SearchMovies';
 export * from './MyPagination';
 export * from './NotMovies';
+export * from './Auth/index';

@@ -5,15 +5,16 @@ import {
     AnimationIdPage,
     AnimationPage,
     GenreIdPage,
-    GenresPage,
+    GenresPage, LoginPage,
     MovieIdByGenresPage,
     MovieIdPage,
-    MoviesPage, SoonIdPage,
+    MoviesPage, RegisterPage, SoonIdPage,
     SoonPage,
 } from "../pages";
 import {AppRoutes} from "./appRoutes";
 import {MainLayout} from "../layouts";
 import {Error} from "../components";
+import {PrivateRoute} from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,39 +22,66 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: AppRoutes.HOME,
-                element: <MoviesPage/>,
+                element: <PrivateRoute>
+                    <MoviesPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.MOVIE_ID,
-                element: <MovieIdPage/>,
+                element: <PrivateRoute>
+                    <MovieIdPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.GENRE,
-                element: <GenresPage/>,
+
+                element: <PrivateRoute>
+                    <GenresPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.GENRE_ID,
-                element: <GenreIdPage/>,
+                element: <PrivateRoute>
+                    <GenreIdPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.MOVIE_GENRE_ID,
-                element: <MovieIdByGenresPage/>,
+                element: <PrivateRoute>
+                    <MovieIdByGenresPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.SOON,
-                element: <SoonPage/>,
+                element: <PrivateRoute>
+                    <SoonPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.SOON_ID,
-                element: <SoonIdPage/>,
+                element: <PrivateRoute>
+                    <SoonIdPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.ANIMATION,
-                element: <AnimationPage/>,
+                element: <PrivateRoute>
+                    <AnimationPage/>
+                </PrivateRoute>,
             },
             {
                 path: AppRoutes.ANIMATION_ID,
-                element: <AnimationIdPage/>,
+                element: <PrivateRoute>
+                    <AnimationIdPage/>
+                </PrivateRoute>,
+            },
+            {
+                path: AppRoutes.LOG_IN,
+                element: <LoginPage/>,
+            },
+            {
+                path: AppRoutes.REGISTER,
+                element: <RegisterPage/>,
             },
         ]
     },

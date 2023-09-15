@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice, isFulfilled, isPending} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
+
 import {ICast} from "../../interfaces";
 import {castService} from "../../services";
-
 
 
 interface IState {
@@ -17,11 +17,11 @@ const initialState: IState = {
     error: null,
 };
 
-const getCastsForMovie = createAsyncThunk<ICast[], {id:number}>(
+const getCastsForMovie = createAsyncThunk<ICast[], { id: number }>(
     'castSlice/getCastsForMovie',
     async ({id}, {rejectWithValue}) => {
         try {
-            const {data: { cast }} = await castService.getCastsByMovie(id);
+            const {data: {cast}} = await castService.getCastsByMovie(id);
             return cast
         } catch (e) {
             const err = e as AxiosError;
@@ -52,10 +52,10 @@ const {reducer: castReducer, actions} = castSlice;
 
 const castActions = {
     ...actions,
-  getCastsForMovie
+    getCastsForMovie
 }
 
 export {
-   castActions,
+    castActions,
     castReducer
 }

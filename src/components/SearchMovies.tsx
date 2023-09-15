@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -16,7 +16,7 @@ export const SearchMovies: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const location = useLocation();
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -51,7 +51,7 @@ const navigate = useNavigate();
             <Box onClick={handleReset}
                  sx={{
                      cursor: 'pointer',
-                     borderRadius:'30%',
+                     borderRadius: '30%',
                      '&:hover': {
                          backgroundColor: 'rgba(0, 0, 0, 0.05)',
                      }

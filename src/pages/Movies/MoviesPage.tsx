@@ -13,20 +13,20 @@ export const MoviesPage = () => {
     const {movies, page, searchQuery} = useAppSelector(state => state.movies);
 
     useEffect(() => {
-        if(searchQuery){
-            dispatch(movieAction.getSearchMovie({page:page, value:searchQuery}))
+        if (searchQuery) {
+            dispatch(movieAction.getSearchMovie({page: page, value: searchQuery}))
         } else {
-            dispatch(movieAction.getAllMovies({page:page}))
+            dispatch(movieAction.getAllMovies({page: page}))
         }
     }, [searchQuery, page]);
 
     return (
         <>
             <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                <SearchMovies />
+                <SearchMovies/>
             </Box>
             <MoviesList backLinkHref={backLinkHref} movies={movies}/>
-            {page >=1 && <MyPagination location={location}/>}
+            {page >= 1 && <MyPagination location={location}/>}
             {movies.length === 0 && <NotMovies/>}
         </>
     );

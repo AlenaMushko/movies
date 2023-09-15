@@ -28,17 +28,17 @@ export const MyPagination: React.FC<IProps> = ({location}) => {
     useEffect(() => {
         queryParams.set('page', String(currentPage));
         navigate(location.pathname + "?" + queryParams.toString());
-        if(location.pathname === '/'){
+        if (location.pathname === '/') {
             dispatch(movieAction.getAllMovies({page: currentPage}));
         }
-        const genrePath = location.pathname.split('/').splice(0,2).join('/');
-        if(genrePath === '/genre'){
-            dispatch(genreActions.getGenresById({page: currentPage, id:+genreId}))
+        const genrePath = location.pathname.split('/').splice(0, 2).join('/');
+        if (genrePath === '/genre') {
+            dispatch(genreActions.getGenresById({page: currentPage, id: +genreId}))
         }
-        if(location.pathname === '/soon'){
+        if (location.pathname === '/soon') {
             dispatch(movieAction.getSoonMovies({page: currentPage}))
         }
-        if(location.pathname === '/animation'){
+        if (location.pathname === '/animation') {
             dispatch(movieAction.getAnimationMovies({page: currentPage}))
         }
     }, [currentPage]);

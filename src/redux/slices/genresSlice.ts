@@ -1,12 +1,12 @@
 import {createAsyncThunk, createSlice, isFulfilled, isPending} from "@reduxjs/toolkit";
-
-import {IFilm, IGenre,  IPagination} from "../../interfaces";
 import {AxiosError} from "axios";
+
+import {IFilm, IGenre, IPagination} from "../../interfaces";
 import {genresService} from "../../services/genresService";
 
 interface IState {
     genres: IGenre,
-    moviesByGenre:IFilm[],
+    moviesByGenre: IFilm[],
     page: number,
     total_pages: number,
     isLoading: boolean,
@@ -15,7 +15,7 @@ interface IState {
 
 const initialState: IState = {
     genres: null,
-    moviesByGenre:[],
+    moviesByGenre: [],
     page: 1,
     total_pages: 0,
     isLoading: false,
@@ -35,7 +35,7 @@ const getAllGenres = createAsyncThunk<IGenre, void>(
     }
 )
 
-const getMoviesByGenreId = createAsyncThunk<IPagination<IFilm>, {  page: number,id: number }>(
+const getMoviesByGenreId = createAsyncThunk<IPagination<IFilm>, { page: number, id: number }>(
     'genresSlice/getGenresById',
     async ({page, id}, {rejectWithValue}) => {
         try {

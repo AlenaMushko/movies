@@ -26,7 +26,9 @@ export const SoonIdPage = () => {
 
     return (
         <Container>
-            <Button onClick={()=>navigate(backLinkHref)} variant="outlined" sx={{padding:'12px', marginBottom:'20px'}}><KeyboardReturnIcon  sx={{marginRight:'2vw'}}/> go to the previous page</Button>
+            <Button onClick={() => navigate(backLinkHref)} variant="outlined"
+                    sx={{padding: '12px', marginBottom: '20px'}}><KeyboardReturnIcon sx={{marginRight: '2vw'}}/> go to
+                the previous page</Button>
             <MovieInfo currentMovie={currentMovie} movieId={movieId}/>
         </Container>
     );

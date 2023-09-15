@@ -13,7 +13,7 @@ export const CastMovieItem: React.FC<IpropsCastMovieItem> = ({item}) => {
     const {character, name, original_name, profile_path, popularity} = item;
 
     return (
-        <Card sx={{borderRadius:'12px 12px 0 0 '}}>
+        <Card sx={{borderRadius: '12px 12px 0 0 '}}>
             <PosterPreview
                 posterPath={profile_path}
                 secondTitle={original_name} title={name}
@@ -28,7 +28,7 @@ export const CastMovieItem: React.FC<IpropsCastMovieItem> = ({item}) => {
                 <Typography><Typography variant="span">Stage name:</Typography>{name || ''}</Typography>
                 <Typography><Typography variant="span">Name:</Typography>{original_name || ''}</Typography>
 
-                <Box sx={{display:'flex', gap:'12px', justifyContent:'flex-end'}}>
+                <Box sx={{display: 'flex', gap: '12px', justifyContent: 'flex-end'}}>
                     <ThumbUpIcon/> <Typography>{popularity}</Typography>
                 </Box>
             </CardContent>

@@ -1,6 +1,5 @@
-import { useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import React from "react";
-
 
 import {AppRoutes} from "../../routing";
 import {IFilm} from "../../interfaces";
@@ -10,7 +9,7 @@ import {GenreBadge} from "./GenreBadge";
 
 interface IPropsMoviesListCard {
     item: IFilm,
-    backLinkHref:string,
+    backLinkHref: string,
 }
 
 export const MoviesListCard: React.FC<IPropsMoviesListCard> = ({item, backLinkHref}) => {
@@ -31,10 +30,10 @@ export const MoviesListCard: React.FC<IPropsMoviesListCard> = ({item, backLinkHr
 
     const navigate = useNavigate();
     const handleNavigateToCardInfo = () => {
-        if(backLinkHref === '/'){
+        if (backLinkHref === '/') {
             backLinkHref = AppRoutes.MOVIE
         }
-        navigate(`${backLinkHref}/${id.toString()}`, {state:  backLinkHref});
+        navigate(`${backLinkHref}/${id.toString()}`, {state: backLinkHref});
     };
 
     return (

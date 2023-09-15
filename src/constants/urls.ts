@@ -28,11 +28,11 @@ const urls = {
     search: {
         base: search,
     },
-    cast:{
-        base:cast,
+    cast: {
+        base: cast,
     },
-    videos:{
-        base:videos,
+    videos: {
+        base: videos,
     },
 }
 

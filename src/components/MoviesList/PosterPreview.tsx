@@ -28,12 +28,12 @@ export const PosterPreview: React.FC<IPropsPosterPreview> = ({stars, posterPath,
                     style={{borderRadius: '8px 8px 0 0 '}}
                 />}
             {adult && <Avatar alt="adult" src=""
-                               sx={{
-                                   bgcolor: 'rgb(240, 212, 58)',
-                                   position: "absolute",
-                                   top: "2%",
-                                   right: "5%"
-                               }}
+                              sx={{
+                                  bgcolor: 'rgb(240, 212, 58)',
+                                  position: "absolute",
+                                  top: "2%",
+                                  right: "5%"
+                              }}
             >
                 18+
             </Avatar>

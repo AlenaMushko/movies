@@ -1,9 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
+
 import {movieReducer} from "./slices/moviesSlice";
 import {genreReducer} from "./slices/genresSlice";
 import {castReducer} from "./slices/castSlice";
 import {videoReducer} from "./slices/videoSlice";
-
+import {authReducer} from "./slices/authSlice";
 
 
 const store = configureStore({
@@ -11,7 +12,8 @@ const store = configureStore({
         movies: movieReducer,
         genres: genreReducer,
         casts: castReducer,
-        video:videoReducer,
+        video: videoReducer,
+        user: authReducer
     }
 })
 

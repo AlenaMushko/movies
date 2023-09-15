@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import {createTheme} from '@mui/material/styles';
 
 const lightTheme = createTheme({
     palette: {
@@ -7,23 +7,22 @@ const lightTheme = createTheme({
             main: '#03071f',
         },
         info: {
-            main: '#fff',
+            main: 'rgba(210,222,245,0.67)',
         },
         background: {
             default: '#fff',
-            paper:'#fff',
+            paper: '#fff',
         },
         text: {
             primary: '#03071f',
-            secondary: '#ffd54f',
-            disabled: '#052a0b',
+            secondary: 'rgb(43,19,131)'
         },
     },
-    typography:{
+    typography: {
         span: {
             fontSize: 20,
             fontWeight: 600,
-            marginRight:'12px',
+            marginRight: '12px',
         },
     },
     components: {
@@ -32,12 +31,13 @@ const lightTheme = createTheme({
                 root: {
                     transition: 'color 0.5s ease',
                     '&:hover': {
-                        color: '#775fd8',
+                        background: '#a399ca',
                     },
                 },
             },
         },
-}});
+    }
+});
 
 const darkTheme = createTheme({
     palette: {
@@ -46,7 +46,7 @@ const darkTheme = createTheme({
             main: '#f5f5f5',
         },
         info: {
-            main: '#775fd8',
+            main: '#3b9fed',
         },
         background: {
             default: '#151223',
@@ -54,15 +54,14 @@ const darkTheme = createTheme({
         },
         text: {
             primary: '#f5f5f5',
-            secondary: '#ffd54f',
-            disabled: '#79a4eb',
+            secondary: 'rgb(197,191,222)'
         },
     },
-    typography:{
+    typography: {
         span: {
             fontSize: 20,
             fontWeight: 600,
-            marginRight:'12px',
+            marginRight: '12px',
         },
     },
     components: {
@@ -76,7 +75,8 @@ const darkTheme = createTheme({
                 },
             },
         },
-    }
+
+    },
 });
 
 
@@ -97,4 +97,4 @@ declare module '@mui/material/Typography' {
     }
 }
 
-export { darkTheme, lightTheme };
+export {darkTheme, lightTheme};

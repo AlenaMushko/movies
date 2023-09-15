@@ -7,19 +7,19 @@ import {MoviesListCard} from "../MoviesList";
 import {CardsContainer} from "../CardsContainer";
 import {AppRoutes} from "../../routing";
 
-interface IPropsGenreMovies{
-    location:ILocation
+interface IPropsGenreMovies {
+    location: ILocation
 }
 
-export const GenreMovies:React.FC<IPropsGenreMovies>= ({location}) => {
+export const GenreMovies: React.FC<IPropsGenreMovies> = ({location}) => {
     const dispatch = useAppDispatch();
-    const {moviesByGenre, page} =useAppSelector(state => state.genres);
+    const {moviesByGenre, page} = useAppSelector(state => state.genres);
     const idGenre = location.pathname.split('/')[2];
 
     const backLinkHref = location.pathname ?? AppRoutes.GENRE;
 
     useEffect(() => {
-        dispatch(genreActions.getGenresById({page, id:+idGenre}))
+        dispatch(genreActions.getGenresById({page, id: +idGenre}))
     }, [page, idGenre]);
 
     return (

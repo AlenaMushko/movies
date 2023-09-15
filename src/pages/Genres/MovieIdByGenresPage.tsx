@@ -13,7 +13,7 @@ export const MovieIdByGenresPage = () => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
 
-    const myPathname = pathname.split('/').splice(0,3).join('/');
+    const myPathname = pathname.split('/').splice(0, 3).join('/');
 
     const backLinkHref = myPathname || AppRoutes.GENRE;
 
@@ -25,7 +25,9 @@ export const MovieIdByGenresPage = () => {
     }, []);
     return (
         <Container>
-            <Button onClick={()=>navigate(backLinkHref)} variant="outlined" sx={{padding:'12px', marginBottom:'20px'}}><KeyboardReturnIcon  sx={{marginRight:'2vw'}}/> go to the previous page</Button>
+            <Button onClick={() => navigate(backLinkHref)} variant="outlined"
+                    sx={{padding: '12px', marginBottom: '20px'}}><KeyboardReturnIcon sx={{marginRight: '2vw'}}/> go to
+                the previous page</Button>
             <MovieInfo currentMovie={currentMovie} movieId={movieId}/>
         </Container>
     );

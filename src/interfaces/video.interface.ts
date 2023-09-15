@@ -1,4 +1,4 @@
-export interface IVideo{
+export interface IVideo {
     name: string,
     key: string,
     site: string,
@@ -8,6 +8,6 @@ export interface IVideo{
     id: string,
 }
 
-export interface IVideoObj{
-    results:IVideo[]
+export interface IVideoObj {
+    results: IVideo[]
 }

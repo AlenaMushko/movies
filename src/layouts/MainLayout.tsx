@@ -21,8 +21,8 @@ export const MainLayout = () => {
     const providerTheme = theme === 'dark' ? darkTheme : lightTheme;
 
     return (
-         <ThemeProvider theme={providerTheme}>
-             <CssBaseline/>
+        <ThemeProvider theme={providerTheme}>
+            <CssBaseline/>
             <Header/>
             {movies.length === 0 && isLoading ? <LinearProgress/> : <Outlet/>}
         </ThemeProvider>

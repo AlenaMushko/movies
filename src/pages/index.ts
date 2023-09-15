@@ -11,3 +11,7 @@ export * from './Animation/AnimationIdPage';
 export * from './Soon/SoonPage';
 export * from './Soon/SoonIdPage';
 
+export * from './Auth/RegisterPage';
+export * from './Auth/LoginPage';
+
+

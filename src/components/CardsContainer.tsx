@@ -1,12 +1,12 @@
 import React, {ReactNode} from 'react';
 import {Container, useTheme} from "@mui/material";
 
-interface IPropsCardsContainer{
-    children:ReactNode
+interface IPropsCardsContainer {
+    children: ReactNode
 }
 
-export const CardsContainer:React.FC<IPropsCardsContainer> = ({children}) => {
-    const theme =useTheme();
+export const CardsContainer: React.FC<IPropsCardsContainer> = ({children}) => {
+    const theme = useTheme();
     return (
         <Container sx={{
             paddingY: '40px',

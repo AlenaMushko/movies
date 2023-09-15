@@ -1,13 +1,12 @@
 import {Link} from "react-router-dom";
-import {Box, Button, Container, Typography, useTheme} from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import React from "react";
 
-import {AppRoutes} from "../routing/appRoutes";
+import {AppRoutes} from "../routing";
 import errorPage from '../assets/error.webp';
 
 export const Error: React.FC = () => {
-    const theme = useTheme();
 
     return (<Container sx={{
             color: '#ea5c0f', paddingY: '5vh', background: '#151223', width: '100vw', height: '100vh',
