@@ -46,6 +46,7 @@ export const MyPagination: React.FC<IProps> = ({location}) => {
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
         queryParams.set('page', String(page));
         navigate(location.pathname + "?" + queryParams.toString());
+        window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
     return (

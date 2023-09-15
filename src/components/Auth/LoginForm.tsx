@@ -1,5 +1,5 @@
 import {Button, FormControl, TextField, Typography, useTheme} from '@mui/material';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import {useForm} from "react-hook-form";
 import {MyContainer} from './MyContainer';
@@ -25,12 +25,17 @@ export const LoginForm = () => {
 
     const dispatch = useAppDispatch();
     const theme = useTheme();
-    const [alertMessage, setAlertMessage] = useState<string>('Please login');
+    const [alert] = useState<string>(() => {
+        return (window.localStorage.getItem('alert') ?? 'Please login')
+    });
+
     const navigate = useNavigate();
 
-    const handleLogin = async (user: ILogin) => {
-        setAlertMessage('Please wait, the information is being verified.');
+    useEffect(() => {
+        window.localStorage.setItem('alert', 'Please login');
+    }, []);
 
+    const handleLogin = async (user: ILogin) => {
         try {
             const {data, error} = await supabase
                 .from('users')
@@ -44,9 +49,11 @@ export const LoginForm = () => {
 
             if (data && data.length > 0) {
                 dispatch(authActions.setUser(data[0]));
+                window.localStorage.setItem('alert', "Please login");
             } else {
-                setAlertMessage("incorrect login or password");
+                window.localStorage.setItem('alert', "Incorrect login or password");
             }
+
             reset();
             window.sessionStorage.setItem('userName', data[0]?.name);
             setTimeout(
@@ -58,11 +65,7 @@ export const LoginForm = () => {
             navigate('/')
         } catch (error) {
             console.log(error);
-            setAlertMessage('Something went wrong. Try again');
-        } finally {
-            setTimeout(() => {
-                setAlertMessage('Please login');
-            }, 3000)
+            window.localStorage.setItem('alert', "Incorrect login or password");
         }
     };
 
@@ -73,7 +76,7 @@ export const LoginForm = () => {
                 padding: '12px',
                 color: theme.palette.text.secondary,
                 textDecoration: 'underline'
-            }}> {alertMessage}</Typography>
+            }}> {alert}</Typography>
 
             <FormControl
                 component="form"

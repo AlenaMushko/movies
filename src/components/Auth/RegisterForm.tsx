@@ -23,38 +23,45 @@ export const RegisterForm = () => {
     });
 
     const [alertMessage, setAlertMessage] = useState<string>('Please register');
+
     const navigate = useNavigate();
     const theme = useTheme();
+
     const handleRegister = async (user: IRegister) => {
-        setAlertMessage('Please wait, the information is being verified.');
-
         try {
-            const {data, error} = await supabase.auth.signUp({
-                email: user.email,
-                password: user.password
-            });
+            const existingUser = await supabase
+                .from('users')
+                .select('email')
+                .eq('email', user.email)
+                .single();
 
-            if (error) {
-                throw error;
+            if (existingUser?.data?.email === user.email) {
+                setAlertMessage('A user with this email already exists.')
+                return;
+            } else {
+                const {data, error} = await supabase
+                    .from('users')
+                    .insert({
+                        name: user.name,
+                        email: user.email,
+                        password: user.password
+                    });
+
+                if (error) {
+                    throw error;
+                }
+                setAlertMessage('Please register');
+                navigate(AppRoutes.LOG_IN);
+                reset();
             }
-            setAlertMessage('Registration successful!');
-            navigate(AppRoutes.LOG_IN);
-            reset();
+
         } catch (error) {
             console.log(error);
-
-            if (error && (error as any).statusCode === 429) {
-                setAlertMessage('Email rate limit exceeded');
-            } else {
-                setAlertMessage('Something went wrong. Try again');
-            }
-        } finally {
-            setTimeout(() => {
-                setAlertMessage('Please register');
-            }, 3000)
+            setAlertMessage('Something went wrong. Try again');
         }
     };
 
+    console.log('alertMessage', alertMessage)
     return (
         <MyContainer>
             <Typography variant="h5" sx={{
