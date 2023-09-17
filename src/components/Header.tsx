@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {Box, Button,  useTheme} from "@mui/material";
+import {Box, Button, useTheme} from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
 import {Link as MuiLink} from '@mui/material';
 
@@ -10,16 +10,14 @@ import Logo3 from '../assets/logo3x.png';
 import {AppRoutes} from "../routing";
 import {ThemeToggleButton} from "../themes/ThemeToggleBtn";
 import {UserInfo} from "./UserInfo";
-import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks";
-import {authActions} from "../redux/slices/authSlice";
+import {useAppSelector} from "../hooks/reduxHooks";
 
 export const Header: React.FC = () => {
     const themeStyles = useTheme();
     const {theme} = useAppSelector(state => state.movies);
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
 
-    const {user} = useAppSelector(state => state.user)
+    const user = sessionStorage.getItem('userName')
 
     const links = [
         {
@@ -43,7 +41,7 @@ export const Header: React.FC = () => {
 
     const handleLogout = async () => {
         try {
-            dispatch(authActions.logout());
+            window.sessionStorage.setItem('userName', '')
             await navigate('/login');
         } catch (error) {
             console.error('An error occurred during logout:', error);

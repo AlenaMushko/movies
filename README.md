@@ -9,8 +9,8 @@
 ###### Search Functionality: Find films by title or genre, making your choice easier and faster.
 ###### User Friendly: A sleek, intuitive interface ensures a pleasant browsing experience.
 
-### etup & Installation:
-###### Clone the repository: git clone [repository_url]
+### Setup & Installation:
+###### Clone the repository: git clone [https://github.com/AlenaMushko/movies]
 ###### Navigate to the directory: cd movies
 ###### Install the dependencies: npm install
 ###### Run the app locally: npm start

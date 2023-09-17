@@ -4,8 +4,6 @@ import {movieReducer} from "./slices/moviesSlice";
 import {genreReducer} from "./slices/genresSlice";
 import {castReducer} from "./slices/castSlice";
 import {videoReducer} from "./slices/videoSlice";
-import {authReducer} from "./slices/authSlice";
-
 
 const store = configureStore({
     reducer: {
@@ -13,7 +11,6 @@ const store = configureStore({
         genres: genreReducer,
         casts: castReducer,
         video: videoReducer,
-        user: authReducer
     }
 })
 

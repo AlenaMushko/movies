@@ -9,8 +9,6 @@ import {ILogin} from "../../interfaces";
 import {LoginValidators} from "../../validators";
 import supabase from "../../supabaseClient";
 import {useNavigate} from "react-router-dom";
-import {authActions} from "../../redux/slices/authSlice";
-import {useAppDispatch} from "../../hooks/reduxHooks";
 
 export const LoginForm = () => {
     const {
@@ -23,12 +21,13 @@ export const LoginForm = () => {
         resolver: joiResolver(LoginValidators),
     });
 
-    const dispatch = useAppDispatch();
     const theme = useTheme();
     const [alert] = useState<string>(() => {
         return (window.localStorage.getItem('alert') ?? 'Please login')
     });
-
+    useState<string>(() => {
+        return (window.sessionStorage.getItem('userName') ?? '')
+    });
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,7 +47,6 @@ export const LoginForm = () => {
             }
 
             if (data && data.length > 0) {
-                dispatch(authActions.setUser(data[0]));
                 window.localStorage.setItem('alert', "Please login");
             } else {
                 window.localStorage.setItem('alert', "Incorrect login or password");
