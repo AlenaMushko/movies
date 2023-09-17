@@ -23,7 +23,7 @@ export const SearchMovies: React.FC = () => {
     };
 
     const handleSearch = () => {
-        dispatch(movieAction.setSearchQuery(inputValue));
+        dispatch(movieAction.setSearchQuery(inputValue.trim()));
         dispatch(movieAction.resetPage())
         setInputValue('');
 
