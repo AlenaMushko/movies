@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
         }}>
             <Box sx={{
                 [themeStyles.breakpoints.down('sm')]: {
-                    display: 'flex', alignItems: 'center', gap: '50vw'
+                    display: 'none'
                 }
             }}>
                 <img width={35} height={40}
@@ -73,9 +73,15 @@ export const Header: React.FC = () => {
                      style={{transform: 'rotate(90deg)'}}
 
                 />
+            </Box>
 
+            <Box sx={{
+                [themeStyles.breakpoints.down('sm')]: {
+                    display: 'flex', alignItems: 'center', gap: '50vw', marginBottom: '20px'
+                }
+            }}>
                 <Box sx={{
-                    display: 'flex', gap: '1vw',
+                    display: 'flex', gap: '10vw',
                     [themeStyles.breakpoints.up('sm')]: {
                         display: 'none'
                     }
